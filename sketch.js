@@ -114,13 +114,18 @@ function draw() {
   drawSprites();
 }
 
+//função para gerar obstáculos
 function spawnObstacles(){
+  //condição para gerar um cactus a cada 60 quadros/frames
  if (frameCount % 60 === 0){
-   var obstacle = createSprite(400,165,10,40);
+   //criar o sprite do obstáculo (cactus)
+   var obstacle = createSprite(600,165,10,40);
+   //aplicar velocidade no cactus para se mover para a esquerda
    obstacle.velocityX = -6;
    
     //gerar obstáculos aleatórios
     var rand = Math.round(random(1,6));
+   //declaração switch para atribuir uma imagem ao cactus gerado aleatoriamente
     switch(rand) {
       case 1: obstacle.addImage(obstacle1);
               break;
@@ -137,9 +142,10 @@ function spawnObstacles(){
       default: break;
     }
    
-    //atribuir dimensão e tempo de vida ao obstáculo           
+    //atribuir dimensão            
     obstacle.scale = 0.5;
-    obstacle.lifetime = 300;
+   //tempo de vida ao obstáculo
+    obstacle.lifetime = 100;
    
    //adicionar cada obstáculo ao grupo
     obstaclesGroup.add(obstacle);
@@ -156,7 +162,7 @@ function spawnClouds() {
     cloud.velocityX = -3;
     
      //atribuir tempo de vida à variável
-    cloud.lifetime = 134;
+    cloud.lifetime = 200;
     
     //ajustar a profundidade
     cloud.depth = trex.depth;
